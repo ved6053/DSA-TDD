@@ -5,35 +5,35 @@ import java.security.InvalidAlgorithmParameterException;
 /** https://leetcode.com/problems/container-with-most-water/ */
 public class ContainerWithMostWater {
 
-  public int findContainerWithMostWater(int[] heightOfPillars) throws InvalidAlgorithmParameterException {
+  public int maxCapacityOfWaterContainer(int[] heightOfPillars) throws InvalidAlgorithmParameterException {
     int numOfPillar = heightOfPillars.length;
     int width = numOfPillar - 1;
     if (width < 1) {
       throw new InvalidAlgorithmParameterException("Number of pillar is less than two's");
     }
-    int leftMaxPillar = heightOfPillars[0];
-    int rightMaxPillar = heightOfPillars[numOfPillar-1];
-
-    int leftIndex = 0;
-    int rightIndex = numOfPillar - 1;
+    
+    int leftMaxIndex = 0;
+    int rightMaxIndex = numOfPillar - 1;
     int result = 0;
-    while (leftIndex < numOfPillar && rightIndex >= 0 && leftIndex < rightIndex) {
-      int minHeight = Math.min(leftMaxPillar, rightMaxPillar);
-      result = Math.max(result, width * minHeight);
-      if (leftMaxPillar < rightMaxPillar) {
-        while (leftIndex < numOfPillar && heightOfPillars[leftIndex] <= rightMaxPillar) {
-          width--;
-          leftIndex++;
+    
+    while (width>0) {
+      int leftMaxHeightPillar = heightOfPillars[leftMaxIndex];
+      int rightMaxHeightPillar = heightOfPillars[rightMaxIndex];
+      
+      result = Math.max(result, width *  Math.min(leftMaxHeightPillar, rightMaxHeightPillar));
+      
+      int minIndex = leftMaxHeightPillar <rightMaxHeightPillar ? leftMaxIndex:rightMaxIndex;
+      int maxHeightPillar = leftMaxHeightPillar>rightMaxHeightPillar?leftMaxHeightPillar:rightMaxHeightPillar;
+      
+      while (width>0 && heightOfPillars[minIndex] <= maxHeightPillar) {
+        if(leftMaxHeightPillar!=maxHeightPillar) {
+          minIndex++;
+          leftMaxIndex++;
+        }else {
+          minIndex--;
+          rightMaxIndex--;
         }
-      } else {
-        while (rightIndex >= 0 && heightOfPillars[rightIndex] <= leftMaxPillar) {
-          width--;
-          rightIndex--;
-        }
-      }
-      if (leftIndex < numOfPillar && rightIndex >= 0) {
-        leftMaxPillar = heightOfPillars[leftIndex];
-        rightMaxPillar = heightOfPillars[rightIndex];
+        width--;
       }
     }
     return result;

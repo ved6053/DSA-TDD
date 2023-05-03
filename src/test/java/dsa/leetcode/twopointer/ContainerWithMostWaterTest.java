@@ -16,18 +16,18 @@ class ContainerWithMostWaterTest {
    * Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
    */
   @Description("Test with valid input")
-  void findContainerWithMostWater() throws InvalidAlgorithmParameterException {
+  void find_maxCapacityOfWaterContainer() throws InvalidAlgorithmParameterException {
 	  int[] heightOfPillars = {1,8,6,2,5,4,8,3,7};
 	  ContainerWithMostWater containerWithMostWater = new ContainerWithMostWater();
-	  assertEquals(49,containerWithMostWater.findContainerWithMostWater(heightOfPillars) );
+	  assertEquals(49,containerWithMostWater.maxCapacityOfWaterContainer(heightOfPillars) );
   }
   
   @Test
   @Description("Edge case")
-  void  whenPillarSize_less_than_2_then_findContainerWithMostWater()   {
+  void  whenPillarSize_less_than_2_then_find_maxCapacityOfWaterContainer()   {
 	  int[] heightOfPillars = {1};
 	  ContainerWithMostWater containerWithMostWater = new ContainerWithMostWater();
-	  Throwable exception = assertThrows(InvalidAlgorithmParameterException.class, () ->containerWithMostWater.findContainerWithMostWater(heightOfPillars));
+	  Throwable exception = assertThrows(InvalidAlgorithmParameterException.class, () ->containerWithMostWater.maxCapacityOfWaterContainer(heightOfPillars));
 	  assertEquals("Number of pillar is less than two's", exception.getMessage());
 	 
   }
