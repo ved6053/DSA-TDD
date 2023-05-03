@@ -1,5 +1,8 @@
 package dsa.leetcode.binary.tree;
 
+/**
+ *https://leetcode.com/problems/symmetric-tree/
+ **/
 public class SymmetricTree {
 	public boolean isSymmetric( Node root){
 		if(root==null||(root.left==null&&root.right==null))
