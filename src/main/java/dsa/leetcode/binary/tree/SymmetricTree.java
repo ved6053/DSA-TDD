@@ -9,10 +9,8 @@ public class SymmetricTree {
 	}
 
 	private boolean isMirror( Node l, Node r){
-		if(l==null&&r==null)
-			return true;
-		else if(l==null || r==null)
-			return false;
-		else return l.data == r.data && isMirror(l.left, r.right) && isMirror(l.right, r.left);
+		if(l==null || r==null)
+			return l==r;
+		return l.data == r.data && isMirror(l.left, r.right) && isMirror(l.right, r.left);
 	}
 }
