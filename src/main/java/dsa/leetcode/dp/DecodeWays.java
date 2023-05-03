@@ -10,7 +10,7 @@ public class DecodeWays {
 		this.algo = algo;
 	}
     private int decodeWaysRecursiveSolution(int[] arr, int i){
-		if(arr[0]==0){
+		if(arr[0]==0||arr.length<=0){
 			return 0;
 		}
 		
@@ -24,21 +24,22 @@ public class DecodeWays {
     }
 	private int decodeWaysDP(int[] arr) {
 		int  len = arr.length;
-		if (len <= 0 || arr[0] == 0) {
-            return 0;
+		if(arr[0]==0||arr.length<=0){
+			return 0;
 		}
 		
-		int[] res = new int[len+1];
-		res[0] = 1;
-		res[1] = 1;
+		int res1 = 1;
+		int res2 = 1;
 		for(int i=1;i<len;i++){
 	      if (arr[i] == 0 || arr[i - 1] * 10 + arr[i] > 26) {
-	        res[i + 1] = res[i];
+	        res2 = res1;
 		  } else {
-			res[i+1] = res[i-1]+res[i];
+			int temp = res2+res1;
+			res1 = res2;
+			res2 =temp;
 	      }
 		}
-		return res[len];
+		return res2;
 	}
 
 	public int  decodeWays(String arr) {
