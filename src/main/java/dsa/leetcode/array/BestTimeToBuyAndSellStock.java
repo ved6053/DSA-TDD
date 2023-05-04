@@ -15,6 +15,7 @@ public class BestTimeToBuyAndSellStock {
         buy = arr[i];
       }
     }
+    profit += arr[len-1] -buy;
     return profit;
   }
   public int maxProfitOnSingleDaySell(int[] arr){
