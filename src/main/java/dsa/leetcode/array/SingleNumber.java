@@ -1,7 +1,5 @@
 package dsa.leetcode.array;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class SingleNumber {
 
@@ -14,14 +12,16 @@ public class SingleNumber {
   }
   public int[] findTwoOddWithTwoRepeat(int[] arr) {
     int[] res = new int[2];
-    Map<Integer, Integer> map = new HashMap<>();
+    int diff=0;
     for(int num:arr){
-      map.put(num, map.getOrDefault(num, 0)+1);
+      diff^=num;
     }
-    int i=0;
-    for(Map.Entry<Integer, Integer> entry:map.entrySet()){
-      if(entry.getValue()==1){
-        res[i++] = entry.getKey();
+    diff&=-diff;
+    for(int num:arr){
+      if((diff&num)==0){
+        res[0]^=num;
+      } else {
+        res[1]^=num;
       }
     }
     return res;
