@@ -13,11 +13,11 @@ public class SingleNumber {
   public int findOddWithThreeRepeat(int[] arr) {
     int ones=0, twice=0, thrice=0;
    for(int num:arr) {
-     twice = twice|(ones&num);
-     ones=ones^num;
-     thrice = ones&twice;
-     ones = ones&(~thrice);
-     twice = twice&(~thrice);
+     twice|=(ones&num);
+     ones^=num;
+     thrice&=ones;
+     ones&=(~thrice);
+     twice&=(~thrice);
    }
    return ones;
   }
