@@ -50,5 +50,15 @@ class SingleNumberTest {
   void when_testcase1_then_findOddWithThreeRepeat() {
 		int[] nums = {0,1,0,1,0,1,99};
 		assertEquals(99, singleNumber.findOddWithThreeRepeat(nums));
-	}
+  }
+	
+  /**
+   * Input: nums = [2,2,3,2]
+   * Output: 3
+   */
+  @Test
+  void when_testcase2_then_findOddWithThreeRepeat() {
+	  int[] nums = {2,2,3,2};
+	  assertEquals(3, singleNumber.findOddWithThreeRepeat(nums));
+  }
 }
