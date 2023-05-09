@@ -11,18 +11,14 @@ public class SingleNumber {
   }
 
   public int findOddWithThreeRepeat(int[] arr) {
-    int[] bitMap = new int[32];
-    for (int i = 0; i < 32; i++) {
-      for (int item : arr) {
-        if (((item >> i) & 1) > 0) {
-          bitMap[i] = (bitMap[i] + 1) % 3;
-        }
-      }
-    }
-    int res = 0;
-    for (int i = 0; i < 32; i++) {
-      res = res | (bitMap[i] << i);
-    }
-    return res;
+    int ones=0, twice=0, thrice=0;
+   for(int num:arr) {
+     twice = twice|(ones&num);
+     ones=ones^num;
+     thrice = ones&twice;
+     ones = ones&(~thrice);
+     twice = twice&(~thrice);
+   }
+   return ones;
   }
 }
