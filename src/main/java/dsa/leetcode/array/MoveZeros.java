@@ -12,17 +12,16 @@ public class MoveZeros {
 		}
 		
 		int zeroIndex=0, nonZeroIndex=1;
-		while (zeroIndex<nums.length&&nonZeroIndex<nums.length){
+		while (zeroIndex<nums.length&&nonZeroIndex<nums.length& zeroIndex<nonZeroIndex){
 			while(zeroIndex<nums.length&&nums[zeroIndex]!=0)
 				zeroIndex++;
+			if (nonZeroIndex <zeroIndex)
+				nonZeroIndex = zeroIndex+1;
 			while (nonZeroIndex<nums.length&&nums[nonZeroIndex]==0)
 				nonZeroIndex++;
-            if (zeroIndex <nonZeroIndex) {
-                swap(nums, nonZeroIndex, zeroIndex);
-	            zeroIndex++;
-	            nonZeroIndex++;
-			}
-			
+            if (!(zeroIndex<nums.length&&nonZeroIndex<nums.length))
+				return nums;
+			swap(nums, nonZeroIndex, zeroIndex);
 		}
 		return nums;
 	}
