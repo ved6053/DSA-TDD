@@ -1,9 +1,10 @@
+package interview;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-import interview.Coforge2;
 import org.junit.jupiter.api.Test;
 
-class Test05Test {
+class Coforge2Test {
    private final Coforge2 test= new Coforge2();
    
    @Test
