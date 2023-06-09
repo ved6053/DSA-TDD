@@ -8,6 +8,7 @@ import java.util.Set;
  **/
 public class P001TwoNumberSum {
 
+  //time complexity O(n) and space complexity O(n)
   public  int[] twoNumberSum(int[] array, int targetSum) {
     Set<Integer> hashSet = new HashSet<>();
     for (int element : array) {
@@ -19,4 +20,5 @@ public class P001TwoNumberSum {
     // Write your code here.
     return new int[0];
   }
+  
 }
