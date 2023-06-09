@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class TwoNumberSumTest {
-  TwoNumberSum obj = new TwoNumberSum();
+class P001TwoNumberSumTest {
+  P001TwoNumberSum obj = new P001TwoNumberSum();
 
   @Test
   void testCase1() {

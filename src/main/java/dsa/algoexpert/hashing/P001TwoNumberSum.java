@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * https://www.algoexpert.io/questions/two-number-sum
  **/
-public class TwoNumberSum {
+public class P001TwoNumberSum {
 
   public  int[] twoNumberSum(int[] array, int targetSum) {
     Set<Integer> hashSet = new HashSet<>();
