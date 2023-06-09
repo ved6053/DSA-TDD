@@ -8,17 +8,16 @@ import java.util.List;
 public class P002ValidateSubsequence {
 
 	public  boolean isValidSubsequence(List<Integer> array, List<Integer> sequence) {
-		int i=0, j=0;
-		while(i<array.size()&&j<sequence.size()){
-			int nextElement = sequence.get(j);
-			while(i<array.size()&&array.get(i)!=nextElement)
-				i++;
-			if(i<array.size()&&array.get(i)==nextElement){
-				i++;
-				j++;
+		int  sequenceIndex=0;
+		for(int arrayIndex=0;arrayIndex<array.size();arrayIndex++){
+			if(array.get(arrayIndex)==sequence.get(sequenceIndex)){
+				sequenceIndex++;
 			}
 			
+			if(sequenceIndex==sequence.size()){
+				break;
+			}
 		}
-		return j==sequence.size();
+		return sequenceIndex==sequence.size();
 	}
 }
