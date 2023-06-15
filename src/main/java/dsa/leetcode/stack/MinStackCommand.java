@@ -3,33 +3,54 @@ package dsa.leetcode.stack;
 import java.util.Stack;
 
 /**
+ * Solutions 1:
  * https://leetcode.com/problems/min-stack/
  * https://www.youtube.com/watch?v=SM8-Z99SJ_I&list=PL1w8k37X_6L86f3PUUVFoGYXvZiZHde1S&index=16
  **/
+/**
+ * Solutions 2:
+ * https://www.geeksforgeeks.org/design-a-stack-that-supports-getmin-in-o1-time-and-o1-extra-space/
+ **/
 class MinStack {
 	private final Stack<Integer> stack;
-	private final Stack<Integer> sideStack;
+	private Integer minElement;
 	public MinStack() {
 		stack= new Stack<>();
-		sideStack = new Stack<>();
 	}
 	
 	public void push(int val) {
-		stack.push(val);
-		sideStack.push((sideStack.isEmpty()||sideStack.peek()>val)?val:sideStack.peek());
+		if(stack.isEmpty()){
+			stack.push(val);
+			minElement=val;
+		} else if(minElement>=val){
+			stack.push(2*val-minElement);
+			minElement=val;
+		} else {
+			stack.push(val);
+		}
 	}
 	
 	public int pop() {
-		sideStack.pop();
-		return stack.pop();
+		int val;
+		if(stack.peek()<minElement){
+			val=minElement;
+			minElement=2*minElement-stack.pop();
+		} else {
+			val = stack.pop();
+		}
+		return val;
 	}
 	
 	public int peek() {
-		return stack.peek();
+		if(stack.peek()<minElement){
+			return minElement;
+		} else {
+			return stack.peek();
+		}
 	}
 	
 	public int getMin() {
-		return sideStack.peek();
+		return minElement;
 	}
 
 }
