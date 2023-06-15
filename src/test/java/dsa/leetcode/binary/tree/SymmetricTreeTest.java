@@ -27,15 +27,7 @@ class SymmetricTreeTest {
 	 */
 	  @Test
 	  void when_test_case1_then_call_isSymmetric() {
-		  root = new Node(1);
-		  root.left = new Node(2);
-		  root.right = new Node(2);
-		  root.left.left = new Node(3);
-		  root.left.right = new Node(4);
-		  root.right.left = new Node(4);
-		  root.right.right = new Node(3);
-		  root.left.left.right = new Node(6);
-		  root.right.right.left = new Node(6);
+		  Node root = Node.buildTree(new Integer[]{1,2,2,3,4,4,3,null,6,null,null,null, null,6, null});
 		  assertTrue( symmetricTree.isSymmetric(root));
 	  }
 
@@ -51,13 +43,7 @@ class SymmetricTreeTest {
 		 */
 		@Test
 		void when_test_case2_then_call_isSymmetric() {
-			root = new Node(1);
-			root.left = new Node(2);
-			root.right = new Node(2);
-			root.left.left = null;
-			root.left.right = new Node(3);
-			root.right.left = null;
-			root.right.right = new Node(3);
+			Node root = Node.buildTree(new Integer[]{1,2,2,null,3,null,3});
 			assertFalse( symmetricTree.isSymmetric(root));
 		}
 }
