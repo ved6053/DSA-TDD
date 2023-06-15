@@ -19,7 +19,6 @@ class DiameterOfBinaryTreeTest {
 	  @Test
 	  void testCase1(){
 		  Node root = Node.buildTree(new Integer[]{1,2,3,4,5});
-		  assertEquals(3, obj.heightOfBinaryTree(root));
 		  assertEquals(3, obj.diameterOfBinaryTree(root));
 	  }
 
@@ -37,7 +36,6 @@ class DiameterOfBinaryTreeTest {
 	@Test
 	void testCase2() {
 		Node root = Node.buildTree(new Integer[]{1,2,2,3,4,4,3,null,6,null,null,null, null,6, null});
-		assertEquals(4, obj.heightOfBinaryTree(root));
 		assertEquals(6, obj.diameterOfBinaryTree(root));
 	}
 	
@@ -54,7 +52,16 @@ class DiameterOfBinaryTreeTest {
 	@Test
 	void testCase3() {
 		Node root = Node.buildTree(new Integer[]{1,2,2,null,3,null,3});
-		assertEquals(3, obj.heightOfBinaryTree(root));
 		assertEquals(4, obj.diameterOfBinaryTree(root));
+	}
+	/**
+	 * root= [4,-7,-3,null,null,-9,-3,9,-7,-4,null,6,null,-6,-6,null,null,0,6,5,null,9,null,null,-1,-4,null,null,null,-2]
+	 * diameter = 6
+	 **/
+	@Test
+	void testCase4(){
+		Node root= Node.buildTree(new Integer[]{4,-7,-3,null,null,-9,-3,9,-7,-4,null,6,null,-6,-6,null,null,0,6,5,null,9,null,null,-1,-4,null,null,null,-2});
+		assertEquals(6, obj.diameterOfBinaryTree(root));
+		
 	}
 }
