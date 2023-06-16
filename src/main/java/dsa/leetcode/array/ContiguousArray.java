@@ -8,23 +8,24 @@ import java.util.Map;
  * https://leetcode.com/problems/contiguous-array/
  */
 public class ContiguousArray {
-	public int findMaxLength(int[] nums) {
-		int zeros=0;
-		Map<Integer, Integer> map=new HashMap<>();
-		int result=0;
-		map.put(zeros, -1);
-		for(int i=0;i<nums.length;i++){
-			if(nums[i]==0){
-				zeros++;
-			} else{
-				zeros--;
-			}
-			if(map.containsKey(zeros)){
-				result=Math.max(result, i-map.get(zeros));
-			} else {
-				map.put(zeros, i);
-			}
-		}
-		return result;
-	}
+
+  public int findMaxLength(int[] nums) {
+    int zeros = 0;
+    Map<Integer, Integer> map = new HashMap<>();
+    int result = 0;
+    map.put(zeros, -1);
+    for (int i = 0; i < nums.length; i++) {
+      if (nums[i] == 0) {
+        zeros++;
+      } else {
+        zeros--;
+      }
+      if (map.containsKey(zeros)) {
+        result = Math.max(result, i - map.get(zeros));
+      } else {
+        map.put(zeros, i);
+      }
+    }
+    return result;
+  }
 }

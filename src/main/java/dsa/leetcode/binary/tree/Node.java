@@ -15,6 +15,7 @@ public class Node {
     for (int i = 0; i < arr.length; i++) {
       nodeArray[i] = arr[i] != null ? new Node(arr[i]) : null;
     }
+
     for (int i = 0; i < nodeArray.length; i++) {
       if (2 * i + 1 < nodeArray.length && nodeArray[i] != null) {
         nodeArray[i].left = nodeArray[2 * i + 1];

@@ -12,21 +12,25 @@ class P005TournamentWinnerTest {
 
   @Test
   void testCase1() {
-	  String[][] competitions = {
-		  {"HTML", "Java"},
-		  {"Java", "Python"},
-		  {"Python", "HTML"},
-		  {"C#", "Python"},
-		  {"Java", "C#"},
-		  {"C#", "HTML"},
-		  {"SQL", "C#"},
-		  {"HTML", "SQL"},
-		  {"SQL", "Python"},
-		  {"SQL", "Java"}
-		};
-	  Integer[] results = {0, 1, 1, 1, 0, 1, 0, 1, 1, 0};
-	  assertEquals("C#", obj.tournamentWinner(Arrays.asList(competitions).stream().map(array->Arrays.asList(array)).collect(Collectors.toList()), Arrays.asList(results)));
-	  
-	  
+    String[][] competitions = {
+      {"HTML", "Java"},
+      {"Java", "Python"},
+      {"Python", "HTML"},
+      {"C#", "Python"},
+      {"Java", "C#"},
+      {"C#", "HTML"},
+      {"SQL", "C#"},
+      {"HTML", "SQL"},
+      {"SQL", "Python"},
+      {"SQL", "Java"}
+    };
+    Integer[] results = {0, 1, 1, 1, 0, 1, 0, 1, 1, 0};
+    assertEquals(
+        "C#",
+        obj.tournamentWinner(
+            Arrays.asList(competitions).stream()
+                .map(array -> Arrays.asList(array))
+                .collect(Collectors.toList()),
+            Arrays.asList(results)));
   }
 }
